@@ -1,4 +1,4 @@
-  package com.kangjian.sparkJobs
+package com.kangjian.sparkJobs
 
 import org.apache.spark.SparkConf
 import org.apache.spark.SparkContext
