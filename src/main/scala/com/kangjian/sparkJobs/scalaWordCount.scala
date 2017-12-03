@@ -13,9 +13,8 @@ object scalaWordCount {
   private def calcu(str: String):Unit={
     val conf = new SparkConf().setAppName("scala work count")
     val sc = new SparkContext(conf)
-    val ans = sc.textFile(str).flatMap(line => line.split(" ")).map(word => (word,1)).reduceByKey((x,y) => (x + y))
+    val ans = sc.textFile(str).flatMap(line => line.split(" ")).map(word => (word,1)).reduceByKey((x,y) => (x + y)).collect()
     ans.foreach(x => println(x))
-
     sc.stop()
   }
 
@@ -23,7 +22,6 @@ object scalaWordCount {
     var path = ""
     if (args.length > 0) path = args(0) else usage()
     calcu(path)
-
     println("all work has finished")
   }
 }
